@@ -20,8 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $isOwner = checkIfUserIsOwner($user_id, $jobID);
 
     if ($isOwner) {
-        // Display an error message or redirect to a page indicating that the user cannot apply for their own job
-        echo "You cannot apply for your own job listing.";
+        // Display an error message indicating that the user cannot apply for their own job
+        echo "<h1> You cannot apply for your own job.</h1>";
+                header("Refresh:1 ; URL=jobs.php");
     } else {
         if (isset($_FILES["resume"]) && $_FILES["resume"]["error"] == 0) {
             $allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
